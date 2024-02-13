@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useAuth } from '~/src/services/state/context/authContex';
+import { ScreenWrapper } from '~/src/components/layouts';
 const Page = () => {
   const { logout } = useAuth();
 
@@ -8,11 +9,13 @@ const Page = () => {
     await logout();
   };
   return (
-    <View>
-      <TouchableOpacity onPress={handleLogout}>
-        <Text>Logout</Text>
-      </TouchableOpacity>
-    </View>
+    <ScreenWrapper>
+      <View>
+        <TouchableOpacity onPress={handleLogout}>
+          <Text>Logout</Text>
+        </TouchableOpacity>
+      </View>
+    </ScreenWrapper>
   );
 };
 

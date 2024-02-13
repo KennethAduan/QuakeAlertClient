@@ -52,7 +52,7 @@ export const AuthContextProvider = ({ children }: AuthProps) => {
       // Implement login logic here
       await signInWithEmailAndPassword(auth, email, password);
 
-      return { sucess: true };
+      return { success: true };
     } catch (error: any) {
       let message = error.message;
       if (message.includes('(auth/invalid-email)' && '(auth/admin-restricted-operation)'))
