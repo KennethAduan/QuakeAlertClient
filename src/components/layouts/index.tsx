@@ -18,7 +18,7 @@ export function ScreenWrapper({ children }: ChildrenProps) {
   return (
     <>
       <StatusBar backgroundColor={COLORS.primary} style="light" />
-      <SafeAreaView>
+      <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
         <Box mt={hp(2)} mx={wp(5)}>
           {children}
         </Box>

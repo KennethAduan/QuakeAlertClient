@@ -35,9 +35,5 @@ function MainLayout() {
     }
   }, [isAuthenticated]);
 
-  return (
-    <View flex={1}>
-      <Slot />
-    </View>
-  );
+  return <Slot />;
 }

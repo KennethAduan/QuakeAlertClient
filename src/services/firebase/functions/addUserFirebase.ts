@@ -21,7 +21,7 @@ const addUserFirebase = async ({
 }: User) => {
   if (userId) {
     // Check if userId is defined
-    await setDoc(doc(db, 'users_dummy', userId), {
+    await setDoc(doc(db, 'users', userId), {
       userId,
       email,
       firstName,

@@ -9,6 +9,7 @@ import {
 
 import { CustomHeading, AlertCard } from '~/src/components';
 import { ScreenWrapper } from '~/src/components/layouts';
+import LoadingNoDataAnimation from '~/src/components/loaders/LoadingNoDataAnimation';
 import { COLORS } from '~/src/constants/color';
 import { fetchAlertData } from '~/src/hooks/firebase/fetchAlertData';
 // import { useAuth } from '~/src/services/state/context/authContex';
@@ -30,7 +31,10 @@ const Page = () => {
       unsubscribe();
     };
   }, []);
-
+  // Render "No Current Data" if alertData is empty or loading
+  if (loading || !alertData || alertData.length === 0) {
+    return <LoadingNoDataAnimation />;
+  }
   return (
     <ScreenWrapper>
       <Spinner visible={loading} color={COLORS.primary} />
