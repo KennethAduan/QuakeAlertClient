@@ -4,13 +4,14 @@ import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyAij5PcLcC75bA3xqtXFeAc4cJOCpSww7k',
-  authDomain: 'modiform-81d5e.firebaseapp.com',
-  projectId: 'modiform-81d5e',
-  storageBucket: 'modiform-81d5e.appspot.com',
-  messagingSenderId: '108128153866',
-  appId: '1:108128153866:web:c1b253788a2ca6979b8af3',
-  measurementId: 'G-GZ4TB4MGB5',
+  apiKey: 'AIzaSyB4aWu-09Xe7XbeODMrBBs5GXSHb6uwMyg',
+  authDomain: 'quakealert-60811.firebaseapp.com',
+  databaseURL: 'https://quakealert-60811-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'quakealert-60811',
+  storageBucket: 'quakealert-60811.appspot.com',
+  messagingSenderId: '599991955228',
+  appId: '1:599991955228:web:962aa118b3d688933b14d9',
+  measurementId: 'G-W00WXF2T9Q',
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

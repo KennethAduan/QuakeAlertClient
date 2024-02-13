@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import {
-  heightPercentageToDP as hp,
+  // heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -19,9 +19,7 @@ export function ScreenWrapper({ children }: ChildrenProps) {
     <>
       <StatusBar backgroundColor={COLORS.primary} style="light" />
       <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
-        <Box mt={hp(2)} mx={wp(5)}>
-          {children}
-        </Box>
+        <Box mx={wp(5)}>{children}</Box>
       </SafeAreaView>
     </>
   );

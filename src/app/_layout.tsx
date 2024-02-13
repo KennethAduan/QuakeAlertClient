@@ -1,5 +1,4 @@
-import { View } from '@gluestack-ui/themed';
-import { Slot, useRouter, useSegments } from 'expo-router';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 
 import AppProviders from '../services/providers';
@@ -35,5 +34,14 @@ function MainLayout() {
     }
   }, [isAuthenticated]);
 
-  return <Slot />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(settings)" />
+    </Stack>
+  );
 }

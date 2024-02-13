@@ -1,44 +1,49 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'expo-image';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+// import {
+//   heightPercentageToDP as hp,
+//   widthPercentageToDP as wp,
+// } from 'react-native-responsive-screen';
 
-import { images } from '~/src/constants/imgs';
+import { COLORS } from '~/src/constants/color';
+// import { images } from '~/src/constants/imgs';
 
 const Layout = () => {
-  const LogoRightSide = () => {
-    return (
-      <Image
-        source={images.logoBanner}
-        style={{
-          height: hp(4),
-          width: wp(10),
-          marginRight: wp(5),
-        }}
-      />
-    );
-  };
+  // const LogoRightSide = () => {
+  //   return (
+  //     <Image
+  //       source={images.logoBanner}
+  //       style={{
+  //         height: hp(4),
+  //         width: wp(10),
+  //         marginRight: wp(5),
+  //       }}
+  //     />
+  //   );
+  // };
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'black',
+        tabBarActiveTintColor: COLORS.primary,
         tabBarLabelStyle: {
           fontFamily: 'PoppinsBold',
           // marginBottom: hp(0.1),
         },
-        // headerShown: false,
-        headerTransparent: true,
-        headerRight: () => <LogoRightSide />,
+        headerStyle: {
+          backgroundColor: COLORS.primary,
+        },
+        headerShown: true,
+        headerTintColor: COLORS.white,
+        headerTitleAlign: 'center',
+        tabBarShowLabel: false,
+        // headerTransparent: true,
+        // headerRight: () => <LogoRightSide />,
       }}>
       <Tabs.Screen
         name="home"
         options={{
           title: 'Home',
-
           tabBarIcon: ({ size, color, focused }) =>
             focused ? (
               <Ionicons name="home" size={size} color={color} />
@@ -54,9 +59,9 @@ const Layout = () => {
 
           tabBarIcon: ({ size, color, focused }) =>
             focused ? (
-              <Ionicons name="notifications-sharp" size={size} color={color} />
+              <MaterialCommunityIcons name="bell-ring" size={size} color={color} />
             ) : (
-              <Ionicons name="notifications-outline" size={size} color={color} />
+              <MaterialCommunityIcons name="bell-ring-outline" size={size} color={color} />
             ),
         }}
       />

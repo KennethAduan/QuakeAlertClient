@@ -13,6 +13,8 @@ interface InputFieldProps {
   // eslint-disable-next-line no-unused-vars
   onChangeText: (text: string) => void; // Function to handle text changes
   secureTextEntry?: boolean; // Indicates if the input should be obscured (e.g., for password)
+  readonly?: boolean; // Indicates if the input
+  keyboard?: string;
 }
 
 const GlueStackInputField = ({
@@ -21,6 +23,8 @@ const GlueStackInputField = ({
   placeholder,
   onChangeText,
   secureTextEntry = false,
+  readonly,
+  keyboard,
 }: InputFieldProps) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -37,8 +41,9 @@ const GlueStackInputField = ({
         onChangeText={onChangeText}
         fontSize={hp(1.8)}
         color="black"
+        readOnly={readonly}
         placeholder={placeholder}
-        keyboardType={placeholder === 'Contact No.' ? 'number-pad' : 'default'}
+        keyboardType={keyboard === 'number-pad' ? 'number-pad' : 'default'}
         secureTextEntry={secureTextEntry && !showPassword} // Toggle secure text entry
       />
 

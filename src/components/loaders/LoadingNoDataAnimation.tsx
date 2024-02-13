@@ -11,7 +11,7 @@ import { ScreenWrapper } from '../layouts';
 const LoadingNoDataAnimation = () => {
   return (
     <ScreenWrapper>
-      <Box justifyContent="center" flex={1} mt={hp(40)}>
+      <Box justifyContent="center" flex={1} mt={hp(35)}>
         <LottieView
           source={require('../../../assets/json/NoDataAnimation.json')}
           autoPlay

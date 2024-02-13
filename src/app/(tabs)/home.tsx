@@ -38,9 +38,9 @@ const Page = () => {
   return (
     <ScreenWrapper>
       <Spinner visible={loading} color={COLORS.primary} />
-      <VStack mt={hp(5)}>
+      <VStack>
         <CustomHeading text="QuakeAlert detected Earthquake" textAlign="center" size={2} />
-        <Box h={hp(85)} w={wp(100)}>
+        <Box h={hp(80)} w={wp(100)}>
           <FlashList
             data={alertData}
             keyExtractor={(item, index) => 'key' + index}
