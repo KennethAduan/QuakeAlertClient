@@ -1,12 +1,13 @@
-import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
+import { Tabs } from 'expo-router';
 import React from 'react';
-import { images } from '~/src/constants/imgs';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+
+import { images } from '~/src/constants/imgs';
 
 const Layout = () => {
   const LogoRightSide = () => {

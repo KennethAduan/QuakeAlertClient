@@ -1,10 +1,11 @@
 import { Box, VStack, HStack, Text } from '@gluestack-ui/themed';
+import dayjs from 'dayjs';
 import React from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import dayjs from 'dayjs';
+
 import CustomHeading from '../ui/CustomHeading';
 
 interface AlertCardProps {

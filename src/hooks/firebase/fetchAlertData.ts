@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // File: '~/src/hooks/firebase/fetchAlertData.ts'
 
 import { collection, query, orderBy, onSnapshot, Unsubscribe } from 'firebase/firestore';
