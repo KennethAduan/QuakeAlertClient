@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "kenStack-expo-GluestackIO",
-    "slug": "kenStack-expo-GluestackIO",
+    "name": "quakeAlertClient",
+    "slug": "quakeAlertClient",
     "version": "1.0.0",
 
-    "scheme": "kenStack-expo-GluestackIO",
+    "scheme": "quakeAlertClient",
     "web": {
       "bundler": "metro",
       "output": "static",

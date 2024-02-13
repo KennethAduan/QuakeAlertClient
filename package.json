@@ -1,5 +1,5 @@
 {
-  "name": "kenStack-expo-GluestackIO",
+  "name": "quakeAlertClient",
   "version": "1.0.0",
   "scripts": {
     "android": "expo start --android",
@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^2.1.0",
     "expo": "~50.0.5",
     "expo-constants": "~15.4.5",
+    "expo-image": "~1.10.6",
     "expo-linking": "~6.2.2",
     "expo-router": "^3.4.6",
     "expo-status-bar": "~1.11.1",

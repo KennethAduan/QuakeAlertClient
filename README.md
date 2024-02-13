@@ -21,14 +21,14 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/kenStack-expo-GluestackIO.git
+git clone https://github.com/your-username/quakeAlertClient.git
 
 ```
 
 2. Navigate into the project directory:
 
 ```bash
-- cd kenStack-expo-GluestackIO
+- cd quakeAlertClient
 
 ```
 

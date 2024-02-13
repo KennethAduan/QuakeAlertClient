@@ -3,7 +3,10 @@ import { ImageSourcePropType } from 'react-native';
 
 export const images: { [key: string]: ImageSourcePropType } = {
   // Change this images
-  // GoogleIcon: require('../../assets/imgs/GoogleIcon.png'),
+  SignInBanner: require('../../assets/images/SignInBanner.png'),
+  SignUpBanner: require('../../assets/images/SignUpBanner.png'),
+  forgotPasswordBanner: require('../../assets/images/forgotPasswordBanner.png'),
+
   // AppLogoLight: require('../../assets/imgs/AppLogoLight.png'),
   // AppLogoDark: require('../../assets/imgs/AppLogoDark.png'),
 };

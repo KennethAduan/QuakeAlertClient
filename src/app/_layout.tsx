@@ -1,23 +1,43 @@
-import { Stack } from 'expo-router';
+import { View } from '@gluestack-ui/themed';
+import { Slot, useRouter, useSegments } from 'expo-router';
+import { useEffect } from 'react';
 
 import AppProviders from '../services/providers';
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
+import { useAuth } from '../services/state/context/authContex';
+// export const unstable_settings = {
+//   // Ensure that reloading on `/modal` keeps a back button present.
+//   initialRouteName: '(tabs)',
+// };
 
 export default function RootLayout() {
   return (
     <AppProviders>
-      <_layout />
+      <MainLayout />
     </AppProviders>
   );
 }
 
-function _layout() {
+function MainLayout() {
+  const { isAuthenticated } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+  useEffect(() => {
+    if (isAuthenticated === undefined) {
+      return;
+    }
+
+    const inApp = segments[0] === '(tabs)';
+
+    if (isAuthenticated && !inApp) {
+      router.replace('/home');
+    } else if (isAuthenticated === false) {
+      router.replace('/signIn');
+    }
+  }, [isAuthenticated]);
+
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <View flex={1}>
+      <Slot />
+    </View>
   );
 }
