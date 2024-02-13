@@ -17,6 +17,8 @@
     "@react-native-community/netinfo": "11.1.0",
     "@react-navigation/native": "^6.1.7",
     "@reduxjs/toolkit": "^2.1.0",
+    "@shopify/flash-list": "1.6.3",
+    "dayjs": "^1.11.10",
     "expo": "~50.0.5",
     "expo-constants": "~15.4.5",
     "expo-image": "~1.10.6",

@@ -1,9 +1,26 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-
+import { Image } from 'expo-image';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { images } from '~/src/constants/imgs';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+
 const Layout = () => {
+  const LogoRightSide = () => {
+    return (
+      <Image
+        source={images.logoBanner}
+        style={{
+          height: hp(4),
+          width: wp(10),
+          marginRight: wp(5),
+        }}
+      />
+    );
+  };
   return (
     <Tabs
       screenOptions={{
@@ -12,12 +29,14 @@ const Layout = () => {
           fontFamily: 'PoppinsBold',
           // marginBottom: hp(0.1),
         },
-        headerShown: false,
+        // headerShown: false,
+        headerTransparent: true,
+        headerRight: () => <LogoRightSide />,
       }}>
       <Tabs.Screen
         name="home"
         options={{
-          title: 'HOME',
+          title: 'Home',
 
           tabBarIcon: ({ size, color, focused }) =>
             focused ? (
@@ -43,7 +62,7 @@ const Layout = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'PROFILE',
+          title: 'Profile',
 
           tabBarIcon: ({ size, color, focused }) =>
             focused ? (

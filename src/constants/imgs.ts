@@ -6,6 +6,7 @@ export const images: { [key: string]: ImageSourcePropType } = {
   SignInBanner: require('../../assets/images/SignInBanner.png'),
   SignUpBanner: require('../../assets/images/SignUpBanner.png'),
   forgotPasswordBanner: require('../../assets/images/forgotPasswordBanner.png'),
+  logoBanner: require('../../assets/images/logoBanner.png'),
 
   // AppLogoLight: require('../../assets/imgs/AppLogoLight.png'),
   // AppLogoDark: require('../../assets/imgs/AppLogoDark.png'),
