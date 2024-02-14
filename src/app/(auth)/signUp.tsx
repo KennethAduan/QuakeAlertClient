@@ -138,6 +138,7 @@ const Page = () => {
         <GlueStackInputField
           placeholder="Contact No."
           icon="call-outline"
+          keyboard="number-pad"
           onChangeText={(value) => handleInputChange('contactNo', value)}
           value={state.contactNo}
         />

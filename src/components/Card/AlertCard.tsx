@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Box, VStack, HStack, Text } from '@gluestack-ui/themed';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -22,23 +23,26 @@ const AlertCard = ({ status, date, location, evacuationArea }: AlertCardProps) =
       <VStack mx={wp(5)} mt={hp(1.2)} space="lg">
         <HStack justifyContent="space-between">
           <CustomHeading text="EARTHQUAKE DETAILS" textAlign="left" size={1.5} />
-          <Text fontWeight="bold" color="red" size="xs">
-            {status}
-          </Text>
+          <HStack space="sm">
+            <Ionicons name="warning-outline" size={18} color="black" />
+            <Text fontWeight="bold" color="red" size="sm">
+              {status}
+            </Text>
+          </HStack>
         </HStack>
         <HStack justifyContent="space-between">
-          <Text size="sm" fontWeight="bold" color="black">
-            Date:{' '}
+          <HStack space="sm">
+            <Ionicons name="calendar-outline" size={20} color="black" />
             <Text size="sm" color="black">
               {formattedDate}
             </Text>
-          </Text>
-          <Text size="sm" fontWeight="bold" color="black">
-            Time:{' '}
+          </HStack>
+          <HStack space="sm">
+            <Ionicons name="time-outline" size={20} color="black" />
             <Text size="sm" color="black">
               {formattedTime}
             </Text>
-          </Text>
+          </HStack>
         </HStack>
         <Text size="sm" fontWeight="bold" color="black">
           Location:{' '}

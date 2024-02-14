@@ -31,7 +31,7 @@ const Page = () => {
       return;
     }
 
-    const userDocRef = doc(db, 'users_dummy', userId);
+    const userDocRef = doc(db, 'users', userId);
 
     // Data to update
     const newData = {

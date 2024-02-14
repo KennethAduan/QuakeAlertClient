@@ -47,7 +47,7 @@ const Page = () => {
   return (
     <KeyboardScreenWrapper>
       <Spinner visible={loading} color={COLORS.primary} />
-      <VStack space="lg" mt={hp(2)}>
+      <VStack space="lg" mt={hp(10)}>
         <Image
           source={images.SignInBanner}
           style={{

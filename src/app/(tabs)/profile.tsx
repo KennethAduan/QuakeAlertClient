@@ -56,6 +56,7 @@ const Page = () => {
   const contactNo = value?.data()?.contactNo;
   const fullName = firstName + ' ' + lastName;
 
+  console.log(value);
   return (
     <ScreenWrapper>
       <Spinner visible={loading} color={COLORS.primary} />
