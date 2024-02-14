@@ -27,7 +27,7 @@ const addUserFirebase = async ({
       firstName,
       lastName,
       address,
-      contactNo,
+      phoneNumber: contactNo,
     });
   } else {
     console.error('Error: userId is undefined');
