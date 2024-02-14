@@ -1,27 +1,11 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Link, Tabs } from 'expo-router';
 import React from 'react';
-// import {
-//   heightPercentageToDP as hp,
-//   widthPercentageToDP as wp,
-// } from 'react-native-responsive-screen';
+import { TouchableOpacity } from 'react-native';
 
 import { COLORS } from '~/src/constants/color';
-// import { images } from '~/src/constants/imgs';
 
 const Layout = () => {
-  // const LogoRightSide = () => {
-  //   return (
-  //     <Image
-  //       source={images.logoBanner}
-  //       style={{
-  //         height: hp(4),
-  //         width: wp(10),
-  //         marginRight: wp(5),
-  //       }}
-  //     />
-  //   );
-  // };
   return (
     <Tabs
       screenOptions={{
@@ -69,7 +53,16 @@ const Layout = () => {
         name="profile"
         options={{
           title: 'Profile',
-
+          headerRight: () => (
+            <Link asChild href="/about">
+              <TouchableOpacity
+                style={{
+                  marginRight: 15,
+                }}>
+                <Ionicons name="information-circle-outline" size={30} color="white" />
+              </TouchableOpacity>
+            </Link>
+          ),
           tabBarIcon: ({ size, color, focused }) =>
             focused ? (
               <Ionicons name="person-sharp" size={size} color={color} />

@@ -43,6 +43,13 @@ const Layout = () => {
           animation: 'ios',
         }}
       />
+      <Stack.Screen
+        name="about"
+        options={{
+          title: 'About',
+          animation: 'ios',
+        }}
+      />
     </Stack>
   );
 };
