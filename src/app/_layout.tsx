@@ -1,8 +1,10 @@
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 
+import { NetworkInfo } from '../hooks/netInfo/CheckInternetInfo';
 import AppProviders from '../services/providers';
 import { useAuth } from '../services/state/context/authContex';
+
 // export const unstable_settings = {
 //   // Ensure that reloading on `/modal` keeps a back button present.
 //   initialRouteName: '(tabs)',
@@ -17,7 +19,9 @@ export default function RootLayout() {
 }
 
 function MainLayout() {
+  NetworkInfo();
   const { isAuthenticated } = useAuth();
+
   const segments = useSegments();
   const router = useRouter();
   useEffect(() => {
@@ -39,6 +43,8 @@ function MainLayout() {
       screenOptions={{
         headerShown: false,
       }}>
+      <Stack.Screen name="(public)/noConnection" />
+
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="(settings)" />
