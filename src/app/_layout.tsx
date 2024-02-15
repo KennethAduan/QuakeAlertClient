@@ -20,6 +20,7 @@ export default function RootLayout() {
 
 function MainLayout() {
   NetworkInfo();
+
   const { isAuthenticated } = useAuth();
 
   const segments = useSegments();

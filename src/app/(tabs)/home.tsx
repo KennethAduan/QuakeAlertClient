@@ -14,16 +14,11 @@ import { COLORS } from '~/src/constants/color';
 import { fetchAlertData } from '~/src/hooks/firebase/fetchAlertData';
 import useNotificationTrigger from '~/src/hooks/notifications/notificationTrigger';
 import SendNotificationToken from '~/src/utils/functions/notification/SendNotificationToken';
-// import { useNotificationObserver } from '~/src/hooks/notifications/useNotificationObserver';
-// import { useAuth } from '~/src/services/state/context/authContex';
 
 const Page = () => {
-  const { expoPushToken } = useNotificationTrigger();
-  console.log(expoPushToken);
+  useNotificationTrigger();
+  SendNotificationToken();
 
-  SendNotificationToken({ tokenResponse: expoPushToken });
-  // useNotificationObserver();
-  // const { logout } = useAuth();
   const [alertData, setAlertData] = useState<any>(null);
   const [loading, setLoading] = useState(true); // Initialize loading state
 

@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 
 import registerForPushNotificationsAsync from '../../utils/functions/expo/ExpoNotification';
 
+import { useAppDispatch } from '~/src/services/state/redux/hooks';
+import { UserInfoRedux } from '~/src/services/state/redux/slices/userSlice';
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -13,13 +15,21 @@ Notifications.setNotificationHandler({
 });
 
 export default function useNotificationTrigger() {
+  const dispatch = useAppDispatch();
   const [expoPushToken, setExpoPushToken] = useState<string>('');
   const [notification, setNotification] = useState<Notification>();
   const notificationListener = useRef<Notifications.Subscription>();
   const responseListener = useRef<Notifications.Subscription>();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => setExpoPushToken(token!));
+    registerForPushNotificationsAsync().then((token) => {
+      setExpoPushToken(token!);
+      dispatch(
+        UserInfoRedux({
+          tokenResponse: expoPushToken,
+        })
+      );
+    });
 
     notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
       setNotification(notification);

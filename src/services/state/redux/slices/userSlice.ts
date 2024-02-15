@@ -1,35 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // Modify the state type and arg types to match your needs
 interface userState {
-  userId: string;
-  userEmail: string;
-  userPassword: string;
-  userFirstName: string;
-  userLastName: string;
-  userGender: string;
-  userProfile: string;
-  userUsername: string;
-  userRefNo: string;
-  userRole: string;
-  isFirstLogin: boolean;
-  isLoadingFetching: boolean;
-  userCreatedDate: string;
+  tokenResponse: string;
 }
 
 const initialState: userState = {
-  userId: '',
-  userEmail: '',
-  userPassword: '',
-  userFirstName: '',
-  userLastName: '',
-  userGender: '',
-  userProfile: '',
-  userUsername: '',
-  userRefNo: '',
-  userRole: '',
-  isFirstLogin: true,
-  isLoadingFetching: false,
-  userCreatedDate: '',
+  tokenResponse: '',
 };
 
 const userSlice = createSlice({
