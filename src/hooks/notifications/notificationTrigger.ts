@@ -42,7 +42,8 @@ export default function useNotificationTrigger() {
     };
   }, []);
 
-  console.log('Notifications', notification);
+  // console.log('Notifications', notification);
+  // console.log('🚀 ~ useNotificationTrigger ~ expoPushToken:', expoPushToken);
 
   return { expoPushToken, notification };
 }

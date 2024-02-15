@@ -70,7 +70,7 @@ const Page = () => {
     setLoading(true);
     const response = await signUp({ email, password, firstName, lastName, address, contactNo });
 
-    console.log('The response', response);
+    // console.log('The response', response);
     setLoading(false);
     if (!response.success) {
       Toast.show({

@@ -33,7 +33,7 @@ const Page = () => {
     const response = await signIn({ email, password });
     setLoading(false);
 
-    console.log(response);
+    // console.log(response);
     if (!response.success) {
       Toast.show({
         type: ALERT_TYPE.DANGER,
