@@ -16,8 +16,8 @@ import useNotificationTrigger from '~/src/hooks/notifications/notificationTrigge
 import SendNotificationToken from '~/src/utils/functions/notification/SendNotificationToken';
 
 const Page = () => {
-  useNotificationTrigger();
-  SendNotificationToken();
+  const { expoPushToken } = useNotificationTrigger();
+  SendNotificationToken({ tokenResponse: expoPushToken });
 
   const [alertData, setAlertData] = useState<any>(null);
   const [loading, setLoading] = useState(true); // Initialize loading state

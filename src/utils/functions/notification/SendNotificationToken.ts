@@ -1,45 +1,31 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 
 import { useAuth } from '~/src/services/state/context/authContex';
-import { useAppSelector } from '~/src/services/state/redux/hooks';
 
-const SendNotificationToken = () => {
+interface AuthProps {
+  tokenResponse: string;
+}
+
+const SendNotificationToken = ({ tokenResponse }: AuthProps) => {
   const { user } = useAuth();
-  const user_id: string = user!.uid;
-  const { tokenResponse } = useAppSelector((state) => state.user);
-  const [isTokenReady, setTokenReady] = useState(false);
+  const user_id: string = user.uid;
 
-  useEffect(() => {
-    if (tokenResponse) {
-      setTokenReady(true);
-    }
-  }, [tokenResponse]);
+  //   console.log('🚀 ~ SendNotificationToken ~ tokenResponse:', tokenResponse);
+  //   console.log('🚀 ~ SendNotificationToken ~ user_id:', user_id);
 
-  const sendPushNotification = async () => {
-    const requestData = {
-      userId: user_id,
-      token: tokenResponse,
-    };
-
-    try {
-      const response = await axios.post(
-        'https://quake-alert-server.vercel.app/api/notifyclient/registerPushToken',
-        requestData
-      );
-      console.log('Push token registered successfully:', response.data);
-    } catch (error: any) {
-      console.error('Error registering push token:', error.response || error.message);
-    }
+  const requestData = {
+    userId: user_id,
+    token: tokenResponse,
   };
 
-  useEffect(() => {
-    if (isTokenReady) {
-      sendPushNotification();
-    }
-  }, [isTokenReady]);
-
-  return null; // You can return any JSX or null if this component doesn't render anything
+  axios
+    .post('https://quake-alert-server.vercel.app/api/notifyclient/registerPushToken', requestData)
+    .then((response) => {
+      console.log('Push token registered successfully:', response.data);
+    })
+    .catch((error) => {
+      console.error('Error registering push token:', error.response || error.message);
+    });
 };
 
 export default SendNotificationToken;

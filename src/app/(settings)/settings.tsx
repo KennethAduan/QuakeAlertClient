@@ -19,11 +19,14 @@ import {
 
 import { ScreenWrapper } from '~/src/components/layouts';
 import { COLORS } from '~/src/constants/color';
-
+import useNotificationTrigger from '~/src/hooks/notifications/notificationTrigger';
 const Page = () => {
   // Notification
-  const [isEnableNotif, setIsEnableNotif] = useState(true);
-  const toggleSwitchNotif = () => setIsEnableNotif((previousState) => !previousState);
+  const { isEnableNotif, setIsEnableNotif } = useNotificationTrigger(); // Call the useNotificationTrigger hook
+
+  const toggleNotification = () => {
+    setIsEnableNotif((prevState) => !prevState); // Toggle the isEnableNotif state
+  };
   // Sounds
   const [isEnabledSound, setIsEnabledSound] = useState(false);
   const toggleSwitchSound = () => setIsEnabledSound((previousState) => !previousState);
@@ -42,9 +45,9 @@ const Page = () => {
             </Text>
             <Switch
               trackColor={{ false: '#767577', true: '#81b0ff' }}
-              thumbColor={isEnableNotif ? COLORS.primary : '#f4f3f4'}
+              thumbColor={isEnableNotif ? '#f4f3f4' : '#f4f3f4'}
               ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleSwitchNotif}
+              onValueChange={toggleNotification}
               value={isEnableNotif}
             />
           </HStack>

@@ -6,6 +6,7 @@ import registerForPushNotificationsAsync from '../../utils/functions/expo/ExpoNo
 
 import { useAppDispatch } from '~/src/services/state/redux/hooks';
 import { UserInfoRedux } from '~/src/services/state/redux/slices/userSlice';
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -18,18 +19,20 @@ export default function useNotificationTrigger() {
   const dispatch = useAppDispatch();
   const [expoPushToken, setExpoPushToken] = useState<string>('');
   const [notification, setNotification] = useState<Notification>();
+  const [isEnableNotif, setIsEnableNotif] = useState(true); // Add state for notification switch
   const notificationListener = useRef<Notifications.Subscription>();
   const responseListener = useRef<Notifications.Subscription>();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => {
+    const registerForPushNotifications = async () => {
+      const token = await registerForPushNotificationsAsync();
       setExpoPushToken(token!);
-      dispatch(
-        UserInfoRedux({
-          tokenResponse: expoPushToken,
-        })
-      );
-    });
+      dispatch(UserInfoRedux({ tokenResponse: token }));
+    };
+
+    if (isEnableNotif) {
+      registerForPushNotifications(); // Register for push notifications when notification switch is enabled
+    }
 
     notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
       setNotification(notification);
@@ -50,10 +53,9 @@ export default function useNotificationTrigger() {
         Notifications.removeNotificationSubscription(responseListener.current);
       }
     };
-  }, []);
+  }, [isEnableNotif]); // Include isEnableNotif in the dependency array
 
-  // console.log('Notifications', notification);
-  // console.log('🚀 ~ useNotificationTrigger ~ expoPushToken:', expoPushToken);
+  // Rest of your code...
 
-  return { expoPushToken, notification };
+  return { expoPushToken, notification, isEnableNotif, setIsEnableNotif }; // Return isEnableNotif and setIsEnableNotif
 }
