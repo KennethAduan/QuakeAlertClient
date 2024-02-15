@@ -2,6 +2,8 @@ import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 
 import { NetworkInfo } from '../hooks/netInfo/CheckInternetInfo';
+import useFetchNotification from '../hooks/notifications/fetchNotification';
+// import { useNotificationObserver } from '../hooks/notifications/useNotificationObserver';
 import AppProviders from '../services/providers';
 import { useAuth } from '../services/state/context/authContex';
 
@@ -20,6 +22,8 @@ export default function RootLayout() {
 
 function MainLayout() {
   NetworkInfo();
+  useFetchNotification();
+  // useNotificationObserver();
 
   const { isAuthenticated } = useAuth();
 
