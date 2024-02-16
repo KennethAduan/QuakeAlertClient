@@ -32,6 +32,7 @@
     "expo-updates": "~0.24.10",
     "expo-web-browser": "~12.8.2",
     "firebase": "^10.8.0",
+    "lodash": "^4.17.21",
     "lottie-react-native": "6.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/lodash": "^4.14.202",
     "@types/react": "~18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",

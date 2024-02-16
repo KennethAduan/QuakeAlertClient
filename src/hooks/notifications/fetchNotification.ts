@@ -1,31 +1,49 @@
-import { collection, onSnapshot } from 'firebase/firestore';
-import { useEffect } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { useState, useEffect } from 'react';
 
 import ScheduledNotification from '~/src/components/Notification/ScheduledNotification';
-import { db } from '~/src/services/firebase/config';
+import { rdb } from '~/src/services/firebase/config';
 
 const useFetchNotification = () => {
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [previousStatus, setPreviousStatus] = useState(null); // Track previous status
+
   useEffect(() => {
-    const alertRef = collection(db, 'alert');
+    const statusRef = ref(rdb, 'test');
 
-    // Subscribe to real-time updates
-    const unsubscribe = onSnapshot(alertRef, (snapshot) => {
-      // Get only added documents
-      const addedDocs = snapshot.docChanges().filter((change) => change.type === 'added');
+    const unsubscribe = onValue(statusRef, (snapshot) => {
+      const status = snapshot.val();
+      console.log('Status:', status);
 
-      // Process each added document
-      addedDocs.forEach((change) => {
-        const { description, Location } = change.doc.data().data;
+      // Compare current status with previous status
+      if (!previousStatus || JSON.stringify(previousStatus) !== JSON.stringify(status)) {
+        // Accessing nested fields correctly
+        const { date, level, time } = status?.detected?.status ?? {};
+        console.log('Date:', date);
+        console.log('Level:', level);
+        console.log('Time:', time);
 
-        console.log('Description:', description);
-        console.log('Location:', Location);
-        ScheduledNotification({ titleNotification: description, bodyNotification: Location });
-      });
+        setTitle(level);
+        setBody(date);
+
+        // Update previous status
+        setPreviousStatus(status);
+      }
     });
 
-    // Unsubscribe from real-time updates when component unmounts
+    // Unsubscribe when component unmounts or when dependencies change
     return () => unsubscribe();
-  }, []); // Only run this effect once on component mount
+  }, [previousStatus]); // useEffect dependency
+
+  // Schedule notification whenever title or body changes
+  useEffect(() => {
+    if (title && body) {
+      ScheduledNotification({ titleNotification: title, bodyNotification: body });
+    }
+  }, [title, body]);
+
+  return null; // Return null or use the retrieved data as needed in your component
 };
 
 export default useFetchNotification;

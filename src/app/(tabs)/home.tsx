@@ -12,13 +12,14 @@ import { ScreenWrapper } from '~/src/components/layouts';
 import LoadingNoDataAnimation from '~/src/components/loaders/LoadingNoDataAnimation';
 import { COLORS } from '~/src/constants/color';
 import { fetchAlertData } from '~/src/hooks/firebase/fetchAlertData';
+import useFetchNotification from '~/src/hooks/notifications/fetchNotification';
 import useNotificationTrigger from '~/src/hooks/notifications/notificationTrigger';
 // import SendNotificationToken from '~/src/utils/functions/notification/SendNotificationToken';
 
 const Page = () => {
   useNotificationTrigger();
   // SendNotificationToken({ tokenResponse: expoPushToken });
-
+  useFetchNotification();
   const [alertData, setAlertData] = useState<any>(null);
   const [loading, setLoading] = useState(true); // Initialize loading state
 
