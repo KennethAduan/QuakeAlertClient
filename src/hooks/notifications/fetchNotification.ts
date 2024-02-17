@@ -19,12 +19,12 @@ const useFetchNotification = () => {
       // Compare current status with previous status
       if (!previousStatus || JSON.stringify(previousStatus) !== JSON.stringify(status)) {
         // Accessing nested fields correctly
-        const { date, level, time } = status?.detected?.status ?? {};
+        const { date, level, time, location } = status?.detected?.status ?? {};
         console.log('Date:', date);
         console.log('Level:', level);
         console.log('Time:', time);
-
-        setTitle(level);
+        const headerTitle = level + ' ' + location;
+        setTitle(headerTitle);
         setBody(date);
 
         // Update previous status
@@ -42,7 +42,7 @@ const useFetchNotification = () => {
       ScheduledNotification({ titleNotification: title, bodyNotification: body });
     }
   }, [title, body]);
-
+  console.log(title);
   return null; // Return null or use the retrieved data as needed in your component
 };
 
