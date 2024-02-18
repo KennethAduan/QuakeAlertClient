@@ -16,7 +16,7 @@
         {
           "icon": "./assets/icon.png",
           "color": "#E87EA1",
-          "sounds": ["./assets/sounds/notifSound.wav"]
+          "sounds": ["./assets/sounds/notifsound.wav"]
         }
       ]
     ],
