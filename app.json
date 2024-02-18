@@ -16,7 +16,7 @@
         {
           "icon": "./assets/icon.png",
           "color": "#E87EA1",
-          "sounds": ["./assets/sounds/notification-sound.wav"]
+          "sounds": ["./assets/sounds/notifSound.wav"]
         }
       ]
     ],
@@ -40,7 +40,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.kineto.quakealertclient"
     },
     "extra": {
       "router": {
